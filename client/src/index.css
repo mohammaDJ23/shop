@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: black;
+  --white: white;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.w-max-1080 {
+  max-width: 1080px;
+}
+
+.w-max-600 {
+  max-width: 600px;
+}
+
+.wh-100-v {
+  width: 100vw;
+  height: 100vh;
+}
+
+.mt-65 {
+  margin-top: 65px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lt-0 {
+  top: 0;
+  left: 0;
+}
+
+.lb-0 {
+  left: 0;
+  bottom: 0;
+}
+
+.lt-50 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.image-cover {
+  object-fit: cover;
+}
+
+.b-black {
+  background-color: var(--black);
+}
+
+.c-white {
+  color: white;
+}
+
+.c-red {
+  color: red;
+}
+
+.t-02 {
+  transition: 0.2s;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.word-wrap {
+  word-wrap: break-word;
+}
