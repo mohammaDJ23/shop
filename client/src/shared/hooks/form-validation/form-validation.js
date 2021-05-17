@@ -95,8 +95,7 @@ export function useFormValidation() {
 
         dispatch({
           type: CHANGE_FORM_VALIDATION_BY_LOGIN_INPUTS,
-          isInputValid:
-            inputs["password"]["isInputValid"] && inputs["email"]["isInputValid"]
+          isInputValid: inputs["password"]["isInputValid"] && inputs["email"]["isInputValid"]
         });
       }
     },

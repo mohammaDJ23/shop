@@ -13,14 +13,7 @@ import { ErrorContext } from "../../shared/context/error/error";
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
-
-  const {
-    formValidation,
-    inputs,
-    formValidationHandler,
-    formSwitch
-  } = useFormValidation();
-
+  const { formValidation, inputs, formValidationHandler, formSwitch } = useFormValidation();
   const { sendRequest, isLoading } = useHttp();
   const { redirectHandler } = useRedirect();
   const { loginHandler } = useContext(LoginContext);
@@ -107,25 +100,14 @@ function Auth() {
               <div className="col px-0 align-self-center">
                 <div className="border p-3">
                   <form onSubmit={onSubmitHandler}>
-                    <AuthInputs
-                      isLogin={isLogin}
-                      formValidationHandler={formValidationHandler}
-                    />
+                    <AuthInputs isLogin={isLogin} formValidationHandler={formValidationHandler} />
 
                     <div className="d-flex">
-                      <button
-                        type="submit"
-                        className="btn btn-primary mr-2"
-                        disabled={!formValidation}
-                      >
+                      <button type="submit" className="btn btn-primary mr-2" disabled={!formValidation}>
                         Submit
                       </button>
 
-                      <button
-                        type="button"
-                        className="btn btn-outline-primary"
-                        onClick={formSwitchHandler}
-                      >
+                      <button type="button" className="btn btn-outline-primary" onClick={formSwitchHandler}>
                         {isLogin ? "Switch to Signup" : "Switch to Login"}
                       </button>
 

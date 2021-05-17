@@ -18,21 +18,11 @@ const ProductPage = lazy(() => import("./pages/Product/Product"));
 let timer;
 
 function App() {
-  const { isLogin, expirationDate, loginHandler, logoutHandler } = useContext(
-    LoginContext
-  );
+  const { isLogin, expirationDate, loginHandler, logoutHandler } = useContext(LoginContext);
 
   const { sendRequest } = useHttp();
 
-  const {
-    home,
-    createProduct,
-    updateProduct,
-    auth,
-    cart,
-    product,
-    profile
-  } = routes();
+  const { home, createProduct, updateProduct, auth, cart, product, profile } = routes();
 
   // when the user left form our application without logout
   // then remember the user
@@ -41,11 +31,7 @@ function App() {
     const userData = localStorage.getItem("userData");
     const parsedUserData = JSON.parse(userData);
 
-    if (
-      parsedUserData &&
-      parsedUserData.token &&
-      new Date(parsedUserData.expirationDate) > new Date()
-    ) {
+    if (parsedUserData && parsedUserData.token && new Date(parsedUserData.expirationDate) > new Date()) {
       const { _id, token, name, expirationDate } = parsedUserData;
 
       loginHandler({
@@ -92,12 +78,7 @@ function App() {
 
             {isLogin && (
               <>
-                <Route
-                  exact
-                  path={[createProduct, updateProduct]}
-                  component={AddProductPage}
-                />
-
+                <Route exact path={[createProduct, updateProduct]} component={AddProductPage} />
                 <Route exact path={cart} component={CartPage} />
                 <Route exact path={profile} component={ProfilePage} />
                 <Route exact path={product} component={ProductPage} />

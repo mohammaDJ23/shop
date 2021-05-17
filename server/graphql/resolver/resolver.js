@@ -123,12 +123,7 @@ module.exports = {
         };
       }
 
-      const {
-        _id,
-        password: originalPassword,
-        email: originalEmail,
-        name
-      } = findedUser;
+      const { _id, password: originalPassword, email: originalEmail, name } = findedUser;
 
       // then ckeck the new password with original password
 
@@ -143,11 +138,9 @@ module.exports = {
 
       // then generate a token
 
-      const jwtToken = await jwt.sign(
-        { _id: _id.toString(), email: originalEmail },
-        jwtKey(),
-        { expiresIn: "1h" }
-      );
+      const jwtToken = await jwt.sign({ _id: _id.toString(), email: originalEmail }, jwtKey(), {
+        expiresIn: "1h"
+      });
 
       // send a port of data to the client
 
@@ -564,11 +557,7 @@ module.exports = {
 
       // if add to cart field is true then convert it to the false
 
-      await Product.updateMany(
-        { addToCart: true },
-        { addToCart: false },
-        { session }
-      );
+      await Product.updateMany({ addToCart: true }, { addToCart: false }, { session });
 
       await session.commitTransaction();
       session.endSession();

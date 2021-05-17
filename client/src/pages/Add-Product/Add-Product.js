@@ -71,15 +71,10 @@ function AddProduct() {
                     <ProductInputs formValidationHandler={formValidationHandler} />
 
                     <div className="d-flex">
-                      <button
-                        type="submit"
-                        className="btn btn-primary"
-                        disabled={!formValidation}
-                      >
+                      <button type="submit" className="btn btn-primary" disabled={!formValidation}>
                         {pathname.indexOf("/create-product") > -1
                           ? "Create product"
-                          : pathname.indexOf("/update-product") > -1 &&
-                            "Update product"}
+                          : pathname.indexOf("/update-product") > -1 && "Update product"}
                       </button>
 
                       {isLoading && <Spinner className="ml-2" />}

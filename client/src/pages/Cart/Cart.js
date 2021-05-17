@@ -56,10 +56,7 @@ function Cart() {
               <div className="col px-0">
                 <div className="d-flex align-items-center justify-content-between">
                   <div>
-                    <h5 className="mb-1">
-                      Total products: {data.cart.totalProducts}
-                    </h5>
-
+                    <h5 className="mb-1">Total products: {data.cart.totalProducts}</h5>
                     <h5>Total price: ${data.cart.totalPrice}</h5>
                   </div>
 

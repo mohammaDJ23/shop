@@ -17,12 +17,7 @@ export function rules() {
 
 // validation logic
 
-export function validation({
-  rules: requiredRules,
-  value,
-  minNum = 1,
-  maxNum = 30
-}) {
+export function validation({ rules: requiredRules, value, minNum = 1, maxNum = 30 }) {
   let isValid = true;
 
   const {
@@ -67,18 +62,18 @@ export function validation({
       // to check does value have email schema
 
       case isEmail: {
-        isValid = isValid && /^\S+@\S+\.\S+$/.test(value.trim());
+        isValid =
+          isValid &&
+          /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test(
+            value.trim()
+          );
         break;
       }
 
       // password check
 
       case isPassword: {
-        isValid =
-          isValid &&
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/.test(
-            value.trim()
-          );
+        isValid = isValid && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/.test(value.trim());
 
         break;
       }

@@ -19,9 +19,7 @@ function ErrorContextProvider({ children }) {
   const errorHandler = useCallback(error => setErrorText(error), []);
 
   return (
-    <ErrorContext.Provider value={{ errorText, errorHandler }}>
-      {children}
-    </ErrorContext.Provider>
+    <ErrorContext.Provider value={{ errorText, errorHandler }}>{children}</ErrorContext.Provider>
   );
 }
 

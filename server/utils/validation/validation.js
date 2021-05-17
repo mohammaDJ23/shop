@@ -10,14 +10,7 @@ const {
 } = require("validator").default;
 
 module.exports = function ({ inputs }) {
-  const {
-    name = "",
-    email = "",
-    password = "",
-    productName = "",
-    price = "",
-    description = ""
-  } = inputs;
+  const { name = "", email = "", password = "", productName = "", price = "", description = "" } = inputs;
 
   const isEmpty = [];
 
@@ -28,13 +21,11 @@ module.exports = function ({ inputs }) {
       case "name":
         const newName = trim(name);
 
-        const isNameValid =
-          isLength(newName, { min: 3, max: 20 }) && isAlphanumeric(newName);
+        const isNameValid = isLength(newName, { min: 3, max: 20 }) && isAlphanumeric(newName);
 
         !isNameValid &&
           isEmpty.push({
-            message:
-              "Name is invalid, it should be between 3 - 20 characters and alphanumric.",
+            message: "Name is invalid, it should be between 3 - 20 characters and alphanumric.",
 
             code: 422
           });
@@ -48,13 +39,14 @@ module.exports = function ({ inputs }) {
 
         const isEmailValid =
           isLength(newEmail, { min: 1, max: 50 }) &&
-          isEmail(newEmail) &&
+          /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test(
+            newEmail
+          ) &&
           normalizeEmail(newEmail);
 
         !isEmailValid &&
           isEmpty.push({
-            message:
-              "Email is invalid, it should be between 1 - 50 characters and a valid email.",
+            message: "Email is invalid, it should be between 1 - 50 characters and a valid email.",
 
             code: 422
           });
@@ -92,13 +84,11 @@ module.exports = function ({ inputs }) {
         const newProductName = trim(productName);
 
         const isProductNameValid =
-          isLength(newProductName, { min: 3, max: 30 }) &&
-          isAlphanumeric(newProductName);
+          isLength(newProductName, { min: 3, max: 30 }) && isAlphanumeric(newProductName);
 
         !isProductNameValid &&
           isEmpty.push({
-            message:
-              "Product name is invalid, it should be between 3 - 30 characters and alphanumric.",
+            message: "Product name is invalid, it should be between 3 - 30 characters and alphanumric.",
 
             code: 422
           });
@@ -110,8 +100,7 @@ module.exports = function ({ inputs }) {
       case "price":
         const newPrice = toFloat(trim(price.toString()));
 
-        const isPriceValid =
-          isNumeric(price.toString()) && newPrice > 0 && newPrice <= 1000;
+        const isPriceValid = isNumeric(price.toString()) && newPrice > 0 && newPrice <= 1000;
 
         !isPriceValid &&
           isEmpty.push({
@@ -129,8 +118,7 @@ module.exports = function ({ inputs }) {
 
         !isDescriptionValid &&
           isEmpty.push({
-            message:
-              "description is invalid, it should be between 10 - 100 characters.",
+            message: "description is invalid, it should be between 10 - 100 characters.",
 
             code: 422
           });

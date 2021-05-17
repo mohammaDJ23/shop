@@ -110,6 +110,7 @@ export function useHttp() {
         case ADD_PRODUCT_TO_CART_BUTTON_HOME:
           newData = { ...data };
           newData["home"][index]["addToCart"] = !newData["home"][index]["addToCart"];
+
           break;
 
         // if the user was in the cart page and wanted to remove the prodcut from card
@@ -118,9 +119,7 @@ export function useHttp() {
           newData = { ...data };
           const product = newData["cart"]["products"].splice(index, 1);
           newData["cart"]["totalProducts"] = +newData["cart"]["totalProducts"] - 1;
-
-          newData["cart"]["totalPrice"] =
-            +newData["cart"]["totalPrice"] - +product[0]["price"];
+          newData["cart"]["totalPrice"] = +newData["cart"]["totalPrice"] - +product[0]["price"];
 
           break;
 
@@ -129,6 +128,7 @@ export function useHttp() {
         case ADD_PRODUCT_TO_CART_BUTTON_SINGLE_PRODUCT:
           newData = { ...data };
           newData["product"]["addToCart"] = !newData["product"]["addToCart"];
+
           break;
 
         // delete product
@@ -136,9 +136,7 @@ export function useHttp() {
         case DELETE_PRODUCT:
           newData = { ...data };
           newData["profile"]["products"].splice(index, 1);
-
-          newData["profile"]["totalProducts"] =
-            +newData["profile"]["totalProducts"] - 1;
+          newData["profile"]["totalProducts"] = +newData["profile"]["totalProducts"] - 1;
 
           break;
 
@@ -176,12 +174,14 @@ export function useHttp() {
           case REMOVE_PRODUCT_FROM_CART_BUTTON_CART:
           case ADD_PRODUCT_TO_CART_BUTTON_SINGLE_PRODUCT:
             query = addOrRemoveProductFromCart.bind(queries, { id });
+
             break;
 
           // select the delete product query
 
           case DELETE_PRODUCT:
             query = deleteProduct.bind(queries, { id });
+
             break;
 
           default:
